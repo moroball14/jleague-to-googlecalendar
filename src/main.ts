@@ -1,3 +1,4 @@
+import { HtmlToGoogleCalenderConverter } from "./converter";
 import { Crawler } from "./crowller";
 import { HtmlParser } from "./htmlParser";
 
@@ -7,7 +8,8 @@ async function main() {
   );
   const html = await crawler.getRawHtml();
   const result = new HtmlParser(html).parse();
-  console.log(result);
+  const events = new HtmlToGoogleCalenderConverter().execute(result);
+  console.log(events);
 }
 
 main();

@@ -16,6 +16,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "googleapis": "^133.0.0",
     "node-html-parser": "^6.1.12",
     "superagent": "^8.1.2"
   }
