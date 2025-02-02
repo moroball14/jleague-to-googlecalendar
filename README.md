@@ -5,3 +5,9 @@
   - https://data.j-league.or.jp/SFMS01/back でチームを選択したら、URL に team_id が含まれている
 - 上記の情報をもとに各変数を変更する
 - `npm run start` で実行する
+
+# Usage
+
+```bash
+$ npm run start -- --team_id=21
+```
