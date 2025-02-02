@@ -20,7 +20,9 @@ export class HtmlToGoogleCalenderConverter
       const matchDate = tds[3].text.trim();
       const matchTime = tds[4].text.trim();
       const startDateTime = new Date(
-        `${args.year}/${matchDate.split("(")[0]} ${matchTime}`
+        `${args.year}-${matchDate.split("(")[0].replace("/", "-")}T${
+          matchTime || "00:00"
+        }:00+09:00`
       );
       const endDateTime = new Date(
         startDateTime.getTime() + 2.5 * 60 * 60 * 1000
@@ -29,10 +31,22 @@ export class HtmlToGoogleCalenderConverter
       const startEndRequest: Pick<GoogleCalendarEvent, "start" | "end"> = {
         start: !!matchTime
           ? { dateTime: startDateTime.toISOString() }
-          : { date: startDateTime.toISOString().split("T")[0] },
+          : {
+              date: startDateTime
+                .toLocaleDateString("ja-JP", {
+                  timeZone: "Asia/Tokyo",
+                })
+                .replace(/\//g, "-"),
+            },
         end: !!matchTime
           ? { dateTime: endDateTime.toISOString() }
-          : { date: endDateTime.toISOString().split("T")[0] },
+          : {
+              date: endDateTime
+                .toLocaleDateString("ja-JP", {
+                  timeZone: "Asia/Tokyo",
+                })
+                .replace(/\//g, "-"),
+            },
       };
       events.push({
         summary: `${homeTeam} vs ${awayTeam}`,
