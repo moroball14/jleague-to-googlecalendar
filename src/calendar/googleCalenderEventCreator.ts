@@ -1,4 +1,4 @@
-import { GoogleCalendarEvent } from "./interfaces/googleCalenderConverter";
+import { GoogleCalendarEvent } from "../interfaces/googleCalenderConverter";
 import { Auth, calendar_v3 } from "googleapis";
 
 export class GoogleCalendarEventCreator {

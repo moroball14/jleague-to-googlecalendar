@@ -3,7 +3,7 @@ import { hideBin } from "yargs/helpers";
 import { authorize } from "./authorize";
 import { HtmlToGoogleCalenderConverter } from "./converter";
 import { Crawler } from "./crowller";
-import { GoogleCalendarEventCreator } from "./googleCalenderEventCreator";
+import { GoogleCalendarEventCreator } from "./calendar/googleCalenderEventCreator";
 import { HtmlParser } from "./htmlParser";
 
 const SCOPES = ["https://www.googleapis.com/auth/calendar"];
